@@ -1,0 +1,14 @@
+alacritty
+btop
+easyeffects
+fastfetch
+firefox-developer-edition
+flameshot
+gcc
+gdb
+git
+okular
+redshift
+unzip
+zip
+zsh

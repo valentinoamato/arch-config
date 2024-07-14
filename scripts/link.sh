@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Symlink user configuration
 cd ../config
 stow user -t $HOME
