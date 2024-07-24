@@ -2,4 +2,4 @@
 	name = Valentino Amato
 	email = 105114984+valentinoamato@users.noreply.github.com
 [core]
-	editor = code --wait
+	editor = nvim -f
