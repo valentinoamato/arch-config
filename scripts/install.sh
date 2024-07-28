@@ -10,6 +10,9 @@ cd fonts
 cd ..
 rm -rf fonts
 
+#Install ohmyzsh https://github.com/ohmyzsh/ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 #Install pacman packages
 packages=$(cat ../packages/pacman/list.txt)
 sudo pacman -S $packages --needed
