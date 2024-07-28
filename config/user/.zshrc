@@ -1,4 +1,4 @@
-#powerline 
+# Powerline https://wiki.archlinux.org/title/Powerline#Zsh 
 powerline-daemon -q
 . /usr/share/powerline/bindings/zsh/powerline.zsh
 

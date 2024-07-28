@@ -1,5 +1,7 @@
 alacritty
+breeze
 btop
+calcurse
 dmenu
 easyeffects
 eog
@@ -37,6 +39,7 @@ speech-dispatcher
 stow
 sudo
 tree
+ufw
 unzip
 wireplumber
 xclip
