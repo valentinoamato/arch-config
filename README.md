@@ -6,36 +6,46 @@ My personal Arch Linux configuration.
 
 2 - Log in as root.
 
-3 - Copy or clone the repo:
+3 - Copy or clone the repository:
 ```bash
 # cd /root 
 # git clone https://github.com/valentinoamato/arch-config.git
 ```
 4 - Run [rootsetup.sh](./scripts/rootsetup.sh):
 
-This script will ask for a name, then create a new user and move the repo to its home directory.
+This script will ask for a name, then create a new user and move the repository to its home directory.
 ```bash
 # cd arch-config/scripts
 # ./rootsetup.sh
 ```
 5 - Log in as the new user.
 
-6 - Run [usersetup.sh](./scripts/usersetup.sh):
+6 - Ensure you are connected to the internet:
+```bash
+$ ping archlinux.org
+```
+
+Consider enabling and starting [NetworkManager](https://wiki.archlinux.org/title/NetworkManager):
+```bash
+# systemctl enable --now NetworkManager
+```
+7 - Run [usersetup.sh](./scripts/usersetup.sh):
 
 This will install all the required packages and apply the configuration for the new user.
 It can also be used later to apply updates after pulling changes.
 ```bash
+# chown -R "$(whoami)" ~/arch-config
 $ cd ~/arch-config/scripts/
 $ ./usersetup.sh
 ```
-7 - Reboot the system:
+8 - Reboot the system:
 ```bash
 # systemctl reboot
 ```
 
 ## See also
 - [General Recommendations](https://wiki.archlinux.org/title/General_recommendations)
-
+- [Generating a new SSH key for GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
     
 ## License

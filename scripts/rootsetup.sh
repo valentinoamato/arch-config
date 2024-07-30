@@ -13,4 +13,4 @@ pacman -S --needed curl git networkmanager vi stow sudo
 
 #Move the repo 
 #This will fail if there is more than one folder in /home 
-mv /root/arch-config "home/$(ls /home)"
+mv /root/arch-config "/home/$(ls /home)"
