@@ -1,7 +1,7 @@
 # arch-config
 My personal Arch Linux configuration.
 
-## Instructions
+## 1. Setup 
 1 - [Install Arch Linux.](https://wiki.archlinux.org/title/Installation_guide)
 
 2 - Log in as root.
@@ -42,12 +42,28 @@ $ ./usersetup.sh
 ```bash
 # systemctl reboot
 ```
+## 2. Application configuration
+Some of the installed applications require manual configuration which will be explained in this section.
+### 2.1 Okular
+#### Set the theme to Breeze Dark:
+![Set okular theme](./media/readme/okular-theme.jpg)
 
-## See also
+#### Change colors:
+Go to `Settings > Configure Okular > Accessibility > Change colors`.
+Then set dark color to `#F3F5C6` and light color to `#282828`
+![Change colors](./media/readme/okular-colors.jpg)
+
+
+### 2.2 Easyeffects
+#### Import preset:
+First add the equalizer effect:
+![Add effect](./media/readme/easyeffects-add-effect.jpg)
+Then go to `Import Preset > APO` and select the [preset](./config/easyeffects):
+![Import preset](./media/readme/easyeffects-import-preset.jpg)
+## 3. See also
 - [General Recommendations](https://wiki.archlinux.org/title/General_recommendations)
 - [Generating a new SSH key for GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-
-    
-## License
+ 
+## 4. License
 
 This project is licensed under the [Unlicense](./LICENSE).
