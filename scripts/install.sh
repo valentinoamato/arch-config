@@ -16,3 +16,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 #Install pacman packages
 packages=$(cat ../packages/pacman/list.txt)
 sudo pacman -S $packages --needed
+
+#Install python packages
+packages=$(cat ../packages/python/list.txt)
+for package in $packages; do 
+    pipx install "$package"
+done

@@ -32,6 +32,7 @@ polybar
 powerline
 python
 python-pip
+python-pipx
 python-pynvim
 redshift
 ripgrep

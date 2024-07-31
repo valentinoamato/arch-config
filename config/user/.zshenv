@@ -7,3 +7,5 @@ export GTK_THEME=Adwaita:dark
 # Set winit scale factor https://doc.servo.org/winit/dpi/index.html#how-is-the-scale-factor-calculated
 export WINIT_X11_SCALE_FACTOR=1
 
+# Add ~/.local/bin to PATH
+export PATH="${PATH}:$HOME/.local/bin"
