@@ -51,15 +51,26 @@ Some of the installed applications require manual configuration which will be ex
 #### Change colors:
 Go to `Settings > Configure Okular > Accessibility > Change colors`.
 Then set dark color to `#F3F5C6` and light color to `#282828`
+
 ![Change colors](./media/readme/okular-colors.jpg)
 
 
 ### 2.2 Easyeffects
 #### Import preset:
 First add the equalizer effect:
+
 ![Add effect](./media/readme/easyeffects-add-effect.jpg)
 Then go to `Import Preset > APO` and select the [preset](./config/easyeffects):
+
 ![Import preset](./media/readme/easyeffects-import-preset.jpg)
+
+### 2.3 Nemo
+#### Set default applications:
+- Set Firefox/Okular as default to open PDFs.
+- Set Eye of Gnome as default to open images.
+- Set the command `alacritty -e nvim` as default to open text files. 
+
+![Set nvim as default](./media/readme/nemo-files.jpg)
 ## 3. See also
 - [General Recommendations](https://wiki.archlinux.org/title/General_recommendations)
 - [Generating a new SSH key for GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
