@@ -1,15 +1,5 @@
 #!/bin/bash
 
-#Install powerline fonts https://github.com/powerline/fonts
-# clone
-git clone https://github.com/powerline/fonts.git --depth=1
-# install
-cd fonts
-./install.sh
-# clean-up a bit
-cd ..
-rm -rf fonts
-
 #Install ohmyzsh https://github.com/ohmyzsh/ohmyzsh
 #Oh-my-zsh attacks .zshrc so i protect it
 mv $HOME/.zshrc $HOME/.zshrclink.bak

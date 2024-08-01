@@ -1,6 +1,9 @@
 [font]
-normal = { family = "Droid Sans Mono Dotted for Powerline", style = "Regular" }
-size = 10.5
+normal = { family = "JetBrainsMonoNLNerdFontMono", style = "Regular" }
+bold = { family = "JetBrainsMonoNLNerdFontMono", style = "Bold" }
+italic = { family = "JetBrainsMonoNLNerdFontMono", style = "Italic" }
+bold_italic = { family = "JetBrainsMonoNLNerdFontMono", style = "Bold Italic" }
+size = 11
 
 # Default colors
 [colors.primary]

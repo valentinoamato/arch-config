@@ -41,6 +41,7 @@ speech-dispatcher
 stow
 sudo
 tree
+ttf-jetbrains-mono-nerd
 ufw
 unzip
 wireplumber
