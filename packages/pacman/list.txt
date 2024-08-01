@@ -36,6 +36,7 @@ python-pipx
 python-pynvim
 redshift
 ripgrep
+rustup
 speech-dispatcher
 stow
 sudo

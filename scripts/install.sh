@@ -27,3 +27,6 @@ packages=$(cat ../packages/python/list.txt)
 for package in $packages; do 
     pipx install "$package"
 done
+
+#Install rust
+rustup default stable
