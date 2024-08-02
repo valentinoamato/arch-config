@@ -1,4 +1,5 @@
 alacritty
+bc
 breeze
 btop
 calcurse
