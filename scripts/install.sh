@@ -20,3 +20,6 @@ done
 
 #Install rust
 rustup default stable
+
+#Install tree-sitter cli https://github.com/tree-sitter/tree-sitter/blob/master/cli/README.md
+cargo install tree-sitter-cli

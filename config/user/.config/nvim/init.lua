@@ -128,6 +128,11 @@ require("lazy").setup({
             dependencies = {
                 "nvim-tree/nvim-web-devicons"
             }
+        },
+
+        {   -- Treesitter
+            "nvim-treesitter/nvim-treesitter",
+            build = ":TSUpdate"
         }
     },
     -- Configure any other settings here. See the documentation for more details.
@@ -191,3 +196,12 @@ require("gitsigns").setup()
 
 -- Setup lualine.nvim
 require("lualine").setup()
+
+-- Setup nvim-treesitter
+require("nvim-treesitter.configs").setup({
+    -- Automatically install missing parsers when entering buffer
+    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+    auto_install = true,
+    highlight = { enable = true },
+    indent = { enable = true },
+})

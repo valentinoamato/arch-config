@@ -9,3 +9,6 @@ export WINIT_X11_SCALE_FACTOR=1
 
 # Add ~/.local/bin to PATH
 export PATH="${PATH}:$HOME/.local/bin"
+
+# Add ~/.cargo/bin to PATH https://doc.rust-lang.org/cargo/guide/cargo-home.html#directories
+export PATH="${PATH}:$HOME/.cargo/bin"
