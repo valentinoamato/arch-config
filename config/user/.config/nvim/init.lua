@@ -16,8 +16,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Set leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Disable netwr
 vim.g.loaded_netwr = 1
@@ -27,10 +27,10 @@ vim.g.loaded_netwrPlugin = 1
 vim.opt.number = true
 
 -- Enable mouse support in all modes
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Set clipboard
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Wrapped lines continue visually indented
 vim.opt.breakindent = true
@@ -41,11 +41,11 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Always draw the signcolumn
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Useful to see the difference between whitespace characters
 vim.opt.list = true
-vim.opt.listchars = { tab = '»»',  nbsp = '⏎', trail = '∙'} 
+vim.opt.listchars = { tab = "»»",  nbsp = "⏎", trail = "∙"} 
 
 -- Highlight the line of the cursor
 vim.opt.cursorline = true
@@ -64,17 +64,20 @@ vim.opt.softtabstop = 4
 -- Enable 24-bit RGB color
 vim.opt.termguicolors = true
 
+-- Hide the mode in the last line as it is already displayed in the statusline
+vim.opt.showmode = false
+
 -- Turn off highlighting of matches after a search
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Toggle nvim-tree
-vim.keymap.set('n', '<Leader>e', '<cmd>NvimTreeToggle<CR>')
+vim.keymap.set("n", "<Leader>e", "<cmd>NvimTreeToggle<CR>")
 
 -- Disable arrow keys in all modes
-vim.keymap.set({'n', 'i', 'v', 'x', 's', 'c', 'o', 't'}, '<Up>', '<Nop>', { noremap = true, silent = true })
-vim.keymap.set({'n', 'i', 'v', 'x', 's', 'c', 'o', 't'}, '<Down>', '<Nop>', { noremap = true, silent = true })
-vim.keymap.set({'n', 'i', 'v', 'x', 's', 'c', 'o', 't'}, '<Left>', '<Nop>', { noremap = true, silent = true })
-vim.keymap.set({'n', 'i', 'v', 'x', 's', 'c', 'o', 't'}, '<Right>', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set({"n", "i", "v", "x", "s", "c", "o", "t"}, "<Up>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n", "i", "v", "x", "s", "c", "o", "t"}, "<Down>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n", "i", "v", "x", "s", "c", "o", "t"}, "<Left>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n", "i", "v", "x", "s", "c", "o", "t"}, "<Right>", "<Nop>", { noremap = true, silent = true })
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -106,6 +109,25 @@ require("lazy").setup({
             config = function()
                 require("nvim-tree").setup {}
             end,
+        },
+
+        {   -- Fuzzy finder
+            "nvim-telescope/telescope.nvim",
+            tag = "0.1.8",
+            dependencies = {
+                "nvim-lua/plenary.nvim"
+            }
+        },
+
+        {   -- Git decorations
+            "lewis6991/gitsigns.nvim"
+        },
+
+        {   -- Statusline
+            "nvim-lualine/lualine.nvim",
+            dependencies = {
+                "nvim-tree/nvim-web-devicons"
+            }
         }
     },
     -- Configure any other settings here. See the documentation for more details.
@@ -139,7 +161,7 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
     vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 end)
 
-require("ibl").setup { indent = { highlight = highlight } }
+require("ibl").setup({ indent = { highlight = highlight } })
 
 -- Setup nvim-tree.lua
 require("nvim-tree").setup({
@@ -156,3 +178,16 @@ require("nvim-tree").setup({
         dotfiles = false,
     },
 })
+
+-- Setup telescome.nvim
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+
+-- Setup gitsigns.nvim
+require("gitsigns").setup()
+
+-- Setup lualine.nvim
+require("lualine").setup()
