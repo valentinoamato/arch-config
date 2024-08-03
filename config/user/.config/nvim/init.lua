@@ -45,7 +45,7 @@ vim.opt.signcolumn = "yes"
 
 -- Useful to see the difference between whitespace characters
 vim.opt.list = true
-vim.opt.listchars = { tab = "»»",  nbsp = "⏎", trail = "∙"} 
+vim.opt.listchars = { tab = "»»",  nbsp = "⏎", trail = "∙"}
 
 -- Highlight the line of the cursor
 vim.opt.cursorline = true
@@ -133,7 +133,19 @@ require("lazy").setup({
         {   -- Treesitter
             "nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate"
-        }
+        },
+
+        {   -- Package manager for LSPs, linters, etc
+            "williamboman/mason.nvim"
+        },
+
+        {   -- Makes it easier to use mason.nvim and lspconfig together
+            "williamboman/mason-lspconfig.nvim"
+        },
+
+        {   -- Configs for the Neovim LSP client
+            "neovim/nvim-lspconfig"
+        },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
@@ -184,7 +196,7 @@ require("nvim-tree").setup({
     },
 })
 
--- Setup telescome.nvim
+-- Setup telescope.nvim
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
@@ -205,3 +217,33 @@ require("nvim-treesitter.configs").setup({
     highlight = { enable = true },
     indent = { enable = true },
 })
+
+-- Setup mason.nvim
+require("mason").setup()
+
+-- Setup mason-lspconfig.nvim
+require("mason-lspconfig").setup({
+    -- A list of servers to automatically install if they're not already installed.
+    -- List of available servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
+    ensure_installed = { "lua_ls",
+                         "rust_analyzer",
+                         "clangd",
+    },
+})
+
+-- Setup nvim-lspconfig
+local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup({
+    settings = {
+        Lua = {
+            diagnostics = {
+                -- Define the 'vim' global
+                globals = {
+                    "vim",
+                },
+            },
+        },
+    },
+})
+lspconfig.rust_analyzer.setup {}
+lspconfig.clangd.setup {}
