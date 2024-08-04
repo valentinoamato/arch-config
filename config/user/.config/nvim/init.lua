@@ -92,13 +92,11 @@ require("lazy").setup({
                 vim.cmd([[colorscheme tokyonight-moon]])
             end,
         },
-
         {   -- Indentation guides
             "lukas-reineke/indent-blankline.nvim",
             main = "ibl",
             opts = {}
         },
-
         {   -- File explorer tree
             "nvim-tree/nvim-tree.lua",
             version = "*",
@@ -110,7 +108,6 @@ require("lazy").setup({
                 require("nvim-tree").setup {}
             end,
         },
-
         {   -- Fuzzy finder
             "nvim-telescope/telescope.nvim",
             tag = "0.1.8",
@@ -118,40 +115,46 @@ require("lazy").setup({
                 "nvim-lua/plenary.nvim"
             }
         },
-
         {   -- Git decorations
             "lewis6991/gitsigns.nvim"
         },
-
         {   -- Statusline
             "nvim-lualine/lualine.nvim",
             dependencies = {
                 "nvim-tree/nvim-web-devicons"
             }
         },
-
         {   -- Treesitter
             "nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate"
         },
-
         {   -- Package manager for LSPs, linters, etc
             "williamboman/mason.nvim"
         },
-
         {   -- Makes it easier to use mason.nvim and lspconfig together
             "williamboman/mason-lspconfig.nvim"
         },
-
         {   -- Configs for the Neovim LSP client
             "neovim/nvim-lspconfig"
+        },
+        {   -- Autocompletion plugin
+            "hrsh7th/nvim-cmp"
+        },
+        {   -- LSP source for nvim-cmp
+            "hrsh7th/cmp-nvim-lsp"
+        },
+        {   -- Snippets source for nvim-cmp
+            "saadparwaiz1/cmp_luasnip"
+        },
+        {   -- Snippets plugin
+            "L3MON4D3/LuaSnip"
         },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
     install = { colorscheme = { "habamax" } },
     -- automatically check for plugin updates
-    checker = { enabled = true },
+    checker = { enabled = false },
 })
 
 -- Setup indent-blankline.nvim
@@ -212,7 +215,7 @@ require("lualine").setup()
 -- Setup nvim-treesitter
 require("nvim-treesitter.configs").setup({
     -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+    -- Recommendation: set to false if you dont have `tree-sitter` CLI installed locally
     auto_install = true,
     highlight = { enable = true },
     indent = { enable = true },
@@ -223,7 +226,7 @@ require("mason").setup()
 
 -- Setup mason-lspconfig.nvim
 require("mason-lspconfig").setup({
-    -- A list of servers to automatically install if they're not already installed.
+    -- A list of servers to automatically install if theyre not already installed.
     -- List of available servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
     ensure_installed = { "lua_ls",
                          "rust_analyzer",
@@ -231,19 +234,72 @@ require("mason-lspconfig").setup({
     },
 })
 
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 -- Setup nvim-lspconfig
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({
     settings = {
         Lua = {
             diagnostics = {
-                -- Define the 'vim' global
+                -- Define the "vim" global
                 globals = {
                     "vim",
                 },
             },
         },
     },
+    capabilities = capabilities,
 })
-lspconfig.rust_analyzer.setup {}
-lspconfig.clangd.setup {}
+lspconfig.rust_analyzer.setup({
+    capabilities = capabilities,
+})
+lspconfig.clangd.setup({
+    capabilities = capabilities,
+})
+
+-- Setup luasnip
+local luasnip = require("luasnip")
+
+-- Setup nvim-cmp
+local cmp = require("cmp")
+cmp.setup {
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
+    },
+    window = {
+        completion = cmp.config.window.bordered({}),
+        documentation = cmp.config.window.bordered({}),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+        ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
+        ["<Tab>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        },
+    }),
+    sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+    },
+    formatting = {
+        -- Truncate suggestions that are too long
+        fields = { "abbr", "menu", "kind" },
+        format = function(_, item)
+            local abbr_width = 16
+            local kind_width = 4
+            item.menu = ""
+            if #item.kind > kind_width then
+                item.kind = vim.fn.strcharpart(item.kind, 0, kind_width - 1) .. "…"
+            end
+            if #item.abbr > abbr_width then
+                item.abbr = vim.fn.strcharpart(item.abbr, 0, abbr_width) .. "…"
+            end
+        return item
+    end,
+},
+}
