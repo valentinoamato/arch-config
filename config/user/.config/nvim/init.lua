@@ -79,6 +79,20 @@ vim.keymap.set({"n", "i", "v", "x", "s", "c", "o", "t"}, "<Down>", "<Nop>", { no
 vim.keymap.set({"n", "i", "v", "x", "s", "c", "o", "t"}, "<Left>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set({"n", "i", "v", "x", "s", "c", "o", "t"}, "<Right>", "<Nop>", { noremap = true, silent = true })
 
+-- Move the cursor to other window
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
+-- Resize current window
+local width_amount = 6  -- Width change
+local height_amount = 2 -- Height change
+vim.keymap.set({"n", "t"}, "<Leader>=", ":vert res +" .. width_amount .. "<CR>") -- Increase width
+vim.keymap.set({"n", "t"}, "<Leader>-", ":vert res -" .. width_amount .. "<CR>") -- Decrease width
+vim.keymap.set({"n", "t"}, "<Leader>.", ":res +" .. height_amount .. "<CR>") -- Increase height
+vim.keymap.set({"n", "t"}, "<Leader>,", ":res -" .. height_amount .. "<CR>") -- Decrease height
+
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
