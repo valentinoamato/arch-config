@@ -61,6 +61,10 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 
+-- Set split direction
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 -- Enable 24-bit RGB color
 vim.opt.termguicolors = true
 
