@@ -22,6 +22,8 @@ man-db
 nemo
 neovim
 networkmanager
+nodejs
+npm
 okular
 pavucontrol
 pipewire

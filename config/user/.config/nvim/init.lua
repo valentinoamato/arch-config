@@ -167,7 +167,13 @@ require("lazy").setup({
         {   -- Snippets plugin
             "L3MON4D3/LuaSnip"
         },
-    },
+        {   -- Markdown preview plugin
+            "iamcco/markdown-preview.nvim",
+            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            ft = { "markdown" },
+            build = "cd app && npm install",
+        }
+   },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
     install = { colorscheme = { "habamax" } },
