@@ -97,6 +97,9 @@ vim.keymap.set({"n", "t"}, "<Leader>-", ":vert res -" .. width_amount .. "<CR>")
 vim.keymap.set({"n", "t"}, "<Leader>.", ":res +" .. height_amount .. "<CR>") -- Increase height
 vim.keymap.set({"n", "t"}, "<Leader>,", ":res -" .. height_amount .. "<CR>") -- Decrease height
 
+-- Prevent p from yanking the selection 
+vim.keymap.set("v", "p", "\"_dP")
+
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
