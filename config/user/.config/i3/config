@@ -49,6 +49,10 @@ exec --no-startup-id feh --bg-scale $HOME/arch-config/media/backgrounds/bobblehe
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+#Adjust brightness with brightnessctl
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
 # Use pactl to adjust volume in PulseAudio.
 #set $refresh_i3status killall -SIGUSR1 i3status
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
