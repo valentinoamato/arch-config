@@ -10,6 +10,7 @@ fastfetch
 feh
 firefox-developer-edition
 flameshot
+gcc
 git
 gnome-calculator
 i3-wm
@@ -51,5 +52,6 @@ unzip
 vim
 wireplumber
 xclip
+xorg-xrandr
 zip
 zsh
