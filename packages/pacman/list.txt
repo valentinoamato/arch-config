@@ -36,6 +36,7 @@ polkit
 polybar
 powerline
 python
+python-gobject
 python-pip
 python-pipx
 python-pynvim
