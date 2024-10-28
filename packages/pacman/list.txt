@@ -25,6 +25,7 @@ neovim
 networkmanager
 nodejs
 npm
+ntp
 okular
 pavucontrol
 pipewire

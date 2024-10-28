@@ -21,3 +21,4 @@ printf "Starting systemd units...\n"
 sudo systemctl enable --now lightdm
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now ufw
+sudo systemctl enable --now ntpd
