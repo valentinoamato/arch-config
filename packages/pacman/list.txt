@@ -27,6 +27,7 @@ nodejs
 npm
 ntp
 okular
+pacman-contrib
 pavucontrol
 pipewire
 pipewire-alsa
