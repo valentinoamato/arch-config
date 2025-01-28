@@ -27,6 +27,7 @@ nodejs
 noto-fonts-cjk
 npm
 ntp
+obs-studio
 okular
 pacman-contrib
 pavucontrol
