@@ -102,4 +102,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #Run tauri app with webkit compositing mode disabled
-alias taurirun='env WEBKIT_DISABLE_COMPOSITING_MODE=1 cargo tauri dev'
+alias taurirun='env WEBKIT_DISABLE_COMPOSITING_MODE=1 npm run tauri dev'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
