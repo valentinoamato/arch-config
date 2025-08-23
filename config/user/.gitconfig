@@ -1,5 +1,9 @@
 [user]
-	name = Valentino Amato
-	email = 105114984+valentinoamato@users.noreply.github.com
+    name = Valentino Amato
+    email = 105114984+valentinoamato@users.noreply.github.com
 [core]
-	editor = nvim -f
+    editor = nvim -f
+[merge]
+    tool = nvimdiff
+[mergetool "nvimdiff"]
+    layout = "LOCAL,BASE,REMOTE / MERGED"
