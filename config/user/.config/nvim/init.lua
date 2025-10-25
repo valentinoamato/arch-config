@@ -261,6 +261,9 @@ gitsigns.setup({
             gitsigns.nav_hunk('prev')
           end
         end)
+
+        -- Hunk Preview
+        map('n', '<leader>d', gitsigns.preview_hunk)
     end
 })
 -- Setup lualine.nvim
