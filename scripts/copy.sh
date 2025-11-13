@@ -6,3 +6,6 @@ sudo cp ../media/backgrounds/arch-boolean.jpg /usr/share/pixmaps/arch-boolean.jp
 #Copy lightdm-gtk-greeter.conf
 sudo mkdir -p /etc/lightdm/
 sudo cp ../config/system/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+
+#Copy pacman.conf
+sudo cp ../config/system/pacman/pacman.conf /etc/pacman.conf

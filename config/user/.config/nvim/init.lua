@@ -295,26 +295,30 @@ require("mason-lspconfig").setup({
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Setup nvim-lspconfig
-local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup({
+-- Lua LS
+vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
             diagnostics = {
-                -- Define the "vim" global
-                globals = {
-                    "vim",
-                },
+                globals = { "vim" },
             },
         },
     },
     capabilities = capabilities,
 })
-lspconfig.rust_analyzer.setup({
+vim.lsp.enable("lua_ls")
+
+-- Rust Analyzer
+vim.lsp.config("rust_analyzer", {
     capabilities = capabilities,
 })
-lspconfig.clangd.setup({
+vim.lsp.enable("rust_analyzer")
+
+-- Clangd
+vim.lsp.config("clangd", {
     capabilities = capabilities,
 })
+vim.lsp.enable("clangd")
 
 -- Setup luasnip
 local luasnip = require("luasnip")
