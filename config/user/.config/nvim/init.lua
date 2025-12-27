@@ -134,7 +134,7 @@ require("lazy").setup({
         },
         {   -- Fuzzy finder
             "nvim-telescope/telescope.nvim",
-            tag = "0.1.8",
+            tag = "v0.2.0",
             dependencies = {
                 "nvim-lua/plenary.nvim"
             }
@@ -150,6 +150,7 @@ require("lazy").setup({
         },
         {   -- Treesitter
             "nvim-treesitter/nvim-treesitter",
+            lazy = false,
             build = ":TSUpdate"
         },
         {   -- Package manager for LSPs, linters, etc
@@ -171,7 +172,8 @@ require("lazy").setup({
             "saadparwaiz1/cmp_luasnip"
         },
         {   -- Snippets plugin
-            "L3MON4D3/LuaSnip"
+            "L3MON4D3/LuaSnip",
+            version = "v2.*",
         },
         {   -- Markdown preview plugin
             "iamcco/markdown-preview.nvim",
@@ -269,13 +271,12 @@ gitsigns.setup({
 -- Setup lualine.nvim
 require("lualine").setup()
 
--- Setup nvim-treesitter
-require("nvim-treesitter.configs").setup({
-    -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you dont have `tree-sitter` CLI installed locally
-    auto_install = true,
-    highlight = { enable = true },
-    indent = { enable = true },
+-- Enable nvim-treesitter highlighting
+-- Avoids triggering on UI
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end,
 })
 
 -- Setup mason.nvim

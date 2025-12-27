@@ -3,6 +3,7 @@ bc
 breeze
 btop
 calcurse
+clang
 dmenu
 easyeffects
 eog
