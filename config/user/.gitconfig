@@ -1,6 +1,7 @@
 [user]
     name = Valentino Amato
     email = 105114984+valentinoamato@users.noreply.github.com
+    signingkey = 3F2C6FFE2571FF21
 [core]
     editor = nvim -f
 [merge]
