@@ -296,6 +296,10 @@ require("mason-lspconfig").setup({
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Setup nvim-lspconfig
+
+-- Request Code Action
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+
 -- Lua LS
 vim.lsp.config("lua_ls", {
     settings = {
